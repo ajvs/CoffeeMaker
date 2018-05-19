@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CoffeeMaker.Entities.Drinks>
+
+@{
+    ViewBag.Title = "View Menu";
+}
+
+<h2>Place Order</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrinkName)
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Customer Name
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DropDownList("DrinkName", new SelectList(Model, "Id", "DrinkName"),new { id = "ddDrinkName", @class = "form-control"})
+        </td>
+        <td>
+            @Html.TextBox("Quantity", "", new { id = "txtboxQuantity", @type="number" })
+        </td>
+        <td>
+            @Html.TextBox("CustomerName", "", new { id = "txtboxCustomerName" })
+        </td>
+    </tr>
+
+
+</table>
+<button class="btn btn-default btnPlaceOrder">Place Order</button>

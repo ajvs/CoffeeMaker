@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CoffeeMaker.Entities.Orders>
+
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/app/coffeeorders.js"></script>
+<h2>Order History</h2>
+
+<button type="button" class="btn btn-default" id="btnResetOrders" title="Reset Orders" data-success="Orders Truncated!" data-error="Error encountered. Please check console logs.">Truncate Orders</button>
+
+<table class="table" id="tblOrderHistory">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrinkOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOrdered)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrinkOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrdered)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="orderChartContainer" style="height: 370px; width: 100%;"></div>
